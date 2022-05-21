@@ -9,8 +9,63 @@
   </head>
   <body>
     <form>
-      <input data-input-tel type="tel" placeholder="+380 (__) __ __ ___" />
+      <label>
+        380
+        <input
+          data-input-tel
+          type="tel"
+          placeholder="Phone"
+          maxlength="20"
+          minlength="9"
+          required
+        />
+      </label>
+      <label>
+        +380
+        <input
+          data-input-tel
+          type="tel"
+          placeholder="Phone"
+          maxlength="20"
+          required
+        />
+      </label>
+      <label>
+        93, 63, 50, .....
+        <input
+          data-input-tel
+          type="tel"
+          placeholder="Phone"
+          maxlength="20"
+          required
+        />
+      </label>
+      <label>
+        093, 063, 050, .....
+        <input
+          data-input-tel
+          type="tel"
+          placeholder="Phone"
+          maxlength="20"
+          required
+        />
+      </label>
+      <label>
+        Another phone number
+        <input
+          data-input-tel
+          type="tel"
+          placeholder="Phone"
+          maxlength="20"
+          required
+        />
+      </label>
+
+      <input class="submit" type="submit" value="send" />
     </form>
-    <script src="./script.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="./imask.js"></script>
+    <!-- <script src="./ruMask.js"></script> -->
+    <!-- <script src="./uaMask.js"></script> -->
   </body>
 </html>
