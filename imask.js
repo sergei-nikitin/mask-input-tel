@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  let elements = document.querySelectorAll('input[data-input-tel]');
+  let inputs = document.querySelectorAll('input[data-input-tel]');
 
   const codes = [
     '22',
@@ -104,64 +104,170 @@ document.addEventListener('DOMContentLoaded', function () {
     '099',
   ];
 
-  elements.forEach((element) => {
-    element.addEventListener('input', function () {
-      if (element.value.substring(0, 3) == '380') {
-        // Инициализируем iMask только один раз
-        const phoneMask = IMask(element, {
-          mask: `{+380} (00) 000-00-00`,
-          lazy: false,
-        });
-        element.addEventListener('focus', () => {
-          // При фокусе выравниваем курсор
-          phoneMask.alignCursor();
-        });
-        phoneMask.alignCursor();
-      }
-      if (element.value.substring(0, 4) == '+380') {
-        const phoneMask = IMask(element, {
-          mask: `{+380} (00) 000-00-00`,
-          lazy: false,
-        });
-        element.addEventListener('focus', () => {
-          phoneMask.alignCursor();
-        });
-        phoneMask.alignCursor();
-      }
-      if (codes.includes(element.value.substring(0, 3))) {
-        const phoneMask = IMask(element, {
-          mask: `{+38\\0} (00) 000-00-00`,
-          lazy: false,
-        });
-        element.addEventListener('focus', () => {
-          phoneMask.alignCursor();
-        });
-        phoneMask.alignCursor();
-      }
-      if (longCodes.includes(element.value.substring(0, 4))) {
-        const phoneMask = IMask(element, {
-          mask: `{+380} (00) 000-00-00`,
-          lazy: false,
-        });
-        element.addEventListener('focus', () => {
-          phoneMask.alignCursor();
-        });
-        phoneMask.alignCursor();
-      }
-      if (
-        !longCodes.includes(element.value.substring(0, 4)) ||
-        !codes.includes(element.value.substring(0, 3)) ||
-        !element.value.substring(0, 4) == '+380' ||
-        !element.value.substring(0, 3) == '380'
-      ) {
-        console.log(element.value);
-        // element.value = e.target.value;
+  // let onPhoneKeydown = function (e) {
+  //   console.log('delete');
+  //   let input = e.target;
+  //   console.log(input);
+  //   if (e.keyCode == 8 && input.length == 3) {
+  //     mask.destroy();
+  //   }
+  // };
+  // const getInputNumbersValue = (input) => {
+  //   return input.value.replace(/\D/g, '');
+  // };
 
-        // phoneMask.alignCursor();
-      }
-      element.value[6] == '0'
-        ? (element.style.color = 'red')
-        : (element.style.color = 'black');
+  const onPhoneInputChange = (e) => {
+    let input = e.target;
+    let value = input.value;
+
+    value.includes('_')
+      ? (input.style.color = 'red')
+      : (input.style.color = 'black');
+  };
+
+  const onPhoneInput = (e) => {
+    let input = e.target;
+
+    const phoneMask = IMask(input, {
+      mask: `+38\\0 (00) 000-00-00`,
+      lazy: false,
     });
+
+    // var maskOptions = {
+    //   mask: `+38\\0 (00) 000-00-00`,
+    //   lazy: false,
+    // };
+    // if (input.value.substring(0, 4) == '98') {
+    //   mask.updateOptions({
+    //     mask: `+38\\0 (00) 000-00-00`,
+    //   });
+
+    // }
+    input.addEventListener('keydown', (e) => {
+      if (e.keyCode == 8 && input.value[6] == '_') {
+        phoneMask.updateValue = '';
+        // phoneMask.focus();
+        // phoneMask.alignCursor();
+        // console.log(input.value);
+        // console.log(mask._value);
+        // return;
+      }
+    });
+    // var mask = IMask(input, maskOptions);
+    // phoneMask.alignCursor();
+    // -------
+    // if (input.value.substring(0, 4) == '+380') {
+    //   var maskOptions = {
+    //     mask: `{+38\\0} (00) 000-00-00`,
+    //     lazy: false,
+    //     definitions: {
+    //       '#': /[0-9]/,
+    //     },
+    //   };
+    //   var mask = IMask(input, maskOptions);
+    //   mask.alignCursor();
+    //   input.value[6] == '0'
+    //     ? (input.style.color = 'red')
+    //     : (input.style.color = 'black');
+    // }
+    // if (input.value.substring(0, 3) == '380') {
+    //   var maskOptions = {
+    //     mask: `{+380} (00) 000-00-00`,
+    //     lazy: false,
+    //     definitions: {
+    //       '#': /[0-9]/,
+    //     },
+    //   };
+    //   var mask = IMask(input, maskOptions);
+    //   mask.alignCursor();
+    //   input.value[6] == '0'
+    //     ? (input.style.color = 'red')
+    //     : (input.style.color = 'black');
+    // }
+    // if (codes.includes(input.value.substring(0, 3))) {
+    //   var maskOptions = {
+    //     mask: `{+38\\0} (00) 000-00-00`,
+    //     lazy: false,
+    //     definitions: {
+    //       '#': /[0-9]/,
+    //     },
+    //   };
+    //   var mask = IMask(input, maskOptions);
+    //   mask.alignCursor();
+    //   input.value[6] == '0'
+    //     ? (input.style.color = 'red')
+    //     : (input.style.color = 'black');
+    // }
+    // if (longCodes.includes(input.value.substring(0, 4))) {
+    //   var maskOptions = {
+    //     mask: `{+380} (00) 000-00-00`,
+    //     lazy: false,
+    //     definitions: {
+    //       '#': /[0-9]/,
+    //     },
+    //   };
+    //   var mask = IMask(input, maskOptions);
+    //   mask.alignCursor();
+
+    input.value[6] == '0'
+      ? (input.style.color = 'red')
+      : (input.style.color = 'black');
+
+    // }
+  };
+
+  inputs.forEach((input) => {
+    const phoneMask = IMask(input, {
+      mask: `+38\\0 (00) 000-00-00`,
+      lazy: false,
+      placeholderChar: '_',
+    });
+
+    input.addEventListener('input', () => {
+      console.log(input.value);
+      if (phoneMask && input.value[6] == '0') {
+        input.value[6] == '0'
+          ? (input.style.color = 'red')
+          : (input.style.color = 'black');
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.keyCode == 8 && input.value[6] == '_') {
+        phoneMask.updateOptions({
+          placeholderChar: '',
+        });
+        phoneMask.destroy();
+      }
+    });
+    // input.addEventListener('input', () => {
+    //   console.log(input.value);
+
+    //   if (input.value.substring(0, 4) == '+380') {
+    //     const phoneMask = IMask(input, {
+    //       mask: `+38\\0 00 000-00-00`,
+    //       lazy: false,
+    //       placeholderChar: '_',
+    //     });
+
+    //     // phoneMask.alignCursor();
+    //   }
+    // });
+
+    input.value[6] == '0'
+      ? (input.style.color = 'red')
+      : (input.style.color = 'black');
+
+    input.addEventListener('change', onPhoneInputChange);
   });
 });
+
+// var maskOptions = {
+//   mask: `{+38\\0} (00) 000-00-00`,
+//   lazy: false,
+//   definitions: {
+//     '#': /[0-9]/,
+//   },
+// };
+// var mask = IMask(input, maskOptions);
+// mask.alignCursor();

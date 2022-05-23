@@ -10,23 +10,13 @@
   <body>
     <form>
       <label>
-        380
-        <input
-          data-input-tel
-          type="tel"
-          placeholder="Phone"
-          maxlength="20"
-          minlength="9"
-          required
-        />
-      </label>
-      <label>
         +380
         <input
           data-input-tel
           type="tel"
           placeholder="Phone"
           maxlength="20"
+          pattern="^[+]?[0-9]{9,12}$"
           required
         />
       </label>
