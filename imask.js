@@ -230,6 +230,9 @@ document.addEventListener('DOMContentLoaded', function () {
           ? (input.style.color = 'red')
           : (input.style.color = 'black');
       }
+      input.value[6] == '0'
+        ? (input.style.color = 'red')
+        : (input.style.color = 'black');
     });
 
     input.addEventListener('keydown', (e) => {
@@ -253,10 +256,6 @@ document.addEventListener('DOMContentLoaded', function () {
     //     // phoneMask.alignCursor();
     //   }
     // });
-
-    input.value[6] == '0'
-      ? (input.style.color = 'red')
-      : (input.style.color = 'black');
 
     input.addEventListener('change', onPhoneInputChange);
   });
