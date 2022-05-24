@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
+      input.value[0] += '+';
       const codes = [
         '22',
         '31',
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '35',
         '36',
         '37',
-        '38',
+        // '38',
         '39',
         '41',
         '42',
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ];
       const longCodes = [
         '+38',
+        '380',
         '022',
         '031',
         '032',
@@ -107,6 +109,20 @@ document.addEventListener('DOMContentLoaded', function () {
         '099',
       ];
 
+      const getInputNumbersValue = (input) => {
+        return input.value.replace(/\D/g, '');
+        // return input.value.replace(/^[+]\D/g, '');
+      };
+
+      input.addEventListener('input', (e) => {
+        let item = e.target;
+        let itemValue = getInputNumbersValue(item);
+
+        if (!itemValue) {
+          return (item.value = '');
+        }
+      });
+
       const cheskOnValid = (input) => {
         input.addEventListener('input', () => {
           input.value[6] == '0'
@@ -119,9 +135,9 @@ document.addEventListener('DOMContentLoaded', function () {
         i.addEventListener('blur', (e) => {
           if (i.value.includes('_')) {
             i.style.color = 'red';
-            alert(
-              'Заповніть поле введення номера телефону повністю. Invalid number format',
-            );
+            // alert(
+            //   'Заповніть поле введення номера телефону повністю. Invalid number format',
+            // );
           }
         });
       };
