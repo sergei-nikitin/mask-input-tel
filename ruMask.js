@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const inputs = document.querySelectorAll('input[data-input-tel]');
+  const inputs = document.querySelectorAll('input[data-input-tel-ru]');
   const form = document.querySelector('form');
 
   form.addEventListener('submit', (e) => {
