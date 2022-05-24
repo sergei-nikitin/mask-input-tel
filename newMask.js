@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
       };
 
       const unfocus = (i) => {
-        i.addEventListener('focusout', (e) => {
+        i.addEventListener('blur', (e) => {
           if (i.value.includes('_')) {
             i.style.color = 'red';
             alert(
