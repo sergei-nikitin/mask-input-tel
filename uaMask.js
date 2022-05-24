@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
       input.value[0] += '+';
+
       const codes = [
         '22',
         '31',
@@ -111,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const getInputNumbersValue = (input) => {
         return input.value.replace(/\D/g, '');
-        // return input.value.replace(/^[+]\D/g, '');
       };
 
       input.addEventListener('input', (e) => {
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const cheskOnValid = (input) => {
         input.addEventListener('input', () => {
-          input.value[6] == '0'
+          input.value[6] == '0' || input.value[3] != '0'
             ? (input.style.color = 'red')
             : (input.style.color = 'black');
         });
@@ -135,9 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
         i.addEventListener('blur', (e) => {
           if (i.value.includes('_')) {
             i.style.color = 'red';
-            // alert(
-            //   'Заповніть поле введення номера телефону повністю. Invalid number format',
-            // );
           }
         });
       };
