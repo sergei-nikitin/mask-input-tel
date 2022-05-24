@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   let inputs = document.querySelectorAll('input[data-input-tel]');
-
+  const btns = document.querySelectorAll('button[type="submit"]');
+  console.log(btns);
   const codes = [
     '22',
     '31',
@@ -230,10 +231,10 @@ document.addEventListener('DOMContentLoaded', function () {
           ? (input.style.color = 'red')
           : (input.style.color = 'black');
       }
-      input.value[6] == '0'
-        ? (input.style.color = 'red')
-        : (input.style.color = 'black');
-    });
+    //   input.value[6] == '0'
+    //     ? (input.style.color = 'red')
+    //     : (input.style.color = 'black');
+    // });
 
     input.addEventListener('keydown', (e) => {
       if (e.keyCode == 8 && input.value[6] == '_') {

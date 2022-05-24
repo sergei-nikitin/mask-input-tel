@@ -11,14 +11,24 @@
     <form>
       <label>
         <!-- Введите номер в указанном формате -->
-        <input data-input-tel type="tel" placeholder="Phone" maxlength="20" />
-        <!-- pattern="^[+]?[0-9]{9,12}$" -->
+        <input
+          data-input-tel
+          type="tel"
+          placeholder="+380 (__) ___-__-__"
+          maxlength="20"
+          minlength="8"
+          required
+        />
+        <!-- pattern="^[+]?[0-9]{9,12}$"
+         title="Only numbers please"
+        -->
       </label>
 
-      <input class="submit" type="submit" value="send" />
+      <button class="submit" type="submit" value="send">send</button>
     </form>
     <script src="https://unpkg.com/imask"></script>
-    <script src="./imask.js"></script>
+    <script src="./newMask.js"></script>
+    <!-- <script src="./imask.js"></script> -->
     <!-- <script src="./ruMask.js"></script> -->
     <!-- <script src="./uaMask.js"></script> -->
   </body>
